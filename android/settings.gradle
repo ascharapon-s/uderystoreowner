@@ -1,0 +1,3 @@
+rootProject.name = 'uderystoreowner'
+
+include ':app'
