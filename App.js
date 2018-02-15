@@ -3,7 +3,7 @@ import { Router, Scene } from 'react-native-router-flux';
 
 import Order from './src/screens/order/Order';
 import History from './src/screens/history/History';
-// import Store from './src/screens/store/Store';
+import Store from './src/screens/store/Store';
 
 export default class App extends Component {
   render() {
@@ -12,7 +12,7 @@ export default class App extends Component {
         <Scene key="root">
           <Scene key="order" component={Order} title="Order" />
           <Scene key="history" component={History} title="History" />
-
+          <Scene key="store" component={Store} title="Store" />
         </Scene>
       </Router>
     );

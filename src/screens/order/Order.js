@@ -22,24 +22,37 @@ export default class order extends Component {
 
                 <View style={{ flex: 8 }}>
                 <ScrollView>
-                <View style={{ flex: 1, flexDirection: 'column', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+                <View style={{ flex: 1, flexDirection: 'column', flexWrap: 'wrap', justifyContent: 'space-between', marginTop: 5 }}>
                     {this.state.list.map((item, index) => (
-                        <View style={{ flexDirection: 'row', flexWrap: 'wrap', width: 340, height: 170, margin: 15 }} key={index}>
-                              <View style={{ height: 150 }}>
+                        <Card style={{ flexDirection: 'row', flexWrap: 'wrap', height: 120, marginTop: 0 }} key={index}>
+                              <CardItem style={{ margin: 0 }}>
                                   <Image
-                                    style={{ width: 170, height: 145 }}
+                                    style={{ width: 170, height: 100, marginLeft: 0 }}
                                     source={require('/reactnative/uderystoreowner/src/img/sw.jpg')}
                                   />
-                              </View>
-                              <View style={{ flex: 1, flexDirection: 'row', width: 170, height: 20, justifyContent: 'space-between' }}>
-                                <View style={{ marginLeft: 15 }}>
-                                  <Text>{item.foodName}</Text>
-                                </View>
-                                <View style={{ height: 20 }}>
-                                  <Text>{item.price}</Text>
-                                </View>
-                              </View>
-                        </View>
+                              </CardItem>
+                              <CardItem style={{ flex: 1, flexDirection: 'column', marginRight: 20 }}>
+                                  <CardItem style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', marginLeft: 0, width: 200 }}>
+                                      <View style={{ height: 30, marginLeft: 1 }}>
+                                        <Text>{item.foodName}</Text>
+                                      </View>
+                                      <View style={{ height: 30 }}>
+                                        <Text>{item.price}</Text>
+                                      </View>
+                                  </CardItem>
+                                  <CardItem style={{ flex: 2, flexDirection: 'row', justifyContent: 'space-between', width: 220 }}>
+                                        <Button vertical rounded danger onPress={() => { Actions.store(); }} style={{ marginLeft: 10, backgroundColor: 'green' }}>
+                                          <Icon active name="navigate" />
+                                        </Button>
+                                        <Button vertical rounded danger onPress={() => { Actions.store(); }} style={{ marginLeft: 10 }}>
+                                          <Icon active name="navigate" />
+                                        </Button>
+                                        <Button vertical rounded danger onPress={() => { Actions.store(); }} style={{ marginLeft: 10, marginRight: 5 }}>
+                                          <Icon active name="navigate" />
+                                        </Button>
+                                  </CardItem>
+                              </CardItem>
+                        </Card>
                       ))
                     }
                 </View>
