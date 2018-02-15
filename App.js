@@ -12,7 +12,7 @@ export default class App extends Component {
         <Scene key="root">
           <Scene key="order" component={Order} title="Order" />
           <Scene key="history" component={History} title="History" />
-          
+
         </Scene>
       </Router>
     );
