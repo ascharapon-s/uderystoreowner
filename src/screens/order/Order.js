@@ -8,16 +8,22 @@ export default class order extends Component {
    super(props);
    this.state = {
      selected1: 'key0',
-
+     buttonColor: 'red',
      list: [{ id: 0, foodName: 'ข้าวผัดหมู', price: 25, stat1: 'จ่ายแล้ว', stat2: 'ทำเสร็จแล้ว', stat3: 'รับแล้ว' }, { id: 1, foodName: 'กะเพราไก่', price: 25, stat1: 'จ่ายแล้ว', stat2: 'ทำเสร็จแล้ว', stat3: 'รับแล้ว' }, { id: 2, foodName: 'สุกี้แห้งไก่', price: 25, stat1: 'จ่ายแล้ว', stat2: 'ทำเสร็จแล้ว', stat3: 'รับแล้ว' }, { id: 3, foodName: 'ผัดไข่เค็มหมึก', price: 25, stat1: 'จ่ายแล้ว', stat2: 'ทำเสร็จแล้ว', stat3: 'รับแล้ว' }, { id: 4, foodName: 'มักกะโรนีกุ้ง', price: 25, stat1: 'จ่ายแล้ว', stat2: 'ทำเสร็จแล้ว', stat3: 'รับแล้ว' }, { id: 5, foodName: 'ส้ม', price: 25, stat1: 'จ่ายแล้ว', stat2: 'ทำเสร็จแล้ว', stat3: 'รับแล้ว' }, { id: 6, foodName: 'ส้ม', price: 25, stat1: 'จ่ายแล้ว', stat2: 'ทำเสร็จแล้ว', stat3: 'รับแล้ว' }]
+
    };
   }
+
   render() {
+    function changeButtonColor() {
+        this.setState({ buttonColor: 'green' });
+    }
+
     return (
       <Container style={{ backgroundColor: 'white' }}>
 
                 <View style={{ flex: 1, backgroundColor: '#F6B749', justifyContent: 'center' }}>
-                    <Text style={{ fontSize: 20, marginLeft: 15 }}>รายการสั่งซื้อ</Text>
+                    <Text style={{ fontSize: 20, marginLeft: 15, color: 'white' }}>รายการสั่งซื้อ</Text>
                 </View>
 
                 <View style={{ flex: 8 }}>
@@ -41,13 +47,13 @@ export default class order extends Component {
                                       </View>
                                   </CardItem>
                                   <CardItem style={{ flex: 2, flexDirection: 'row', justifyContent: 'space-between', width: 220 }}>
-                                        <Button vertical rounded danger onPress={() => { Actions.store(); }} style={{ marginLeft: 10, backgroundColor: 'green' }}>
+                                        <Button vertical rounded danger onPress={() => { this.setState({ buttonColor: 'green' }); }} style={{ marginLeft: 10, backgroundColor: this.state.buttonColor }}>
                                           <Icon active name="navigate" />
                                         </Button>
-                                        <Button vertical rounded danger onPress={() => { Actions.store(); }} style={{ marginLeft: 10 }}>
+                                        <Button vertical rounded danger onPress={() => { changeButtonColor(); }} style={{ marginLeft: 10, backgroundColor: this.state.buttonColor }}>
                                           <Icon active name="navigate" />
                                         </Button>
-                                        <Button vertical rounded danger onPress={() => { Actions.store(); }} style={{ marginLeft: 10, marginRight: 5 }}>
+                                        <Button vertical rounded danger onPress={() => { changeButtonColor(); }} style={{ marginLeft: 10, marginRight: 5, backgroundColor: this.state.buttonColor }}>
                                           <Icon active name="navigate" />
                                         </Button>
                                   </CardItem>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Content, Text, Card, Header, Body, Button, Title, CardItem, Image, View, Footer, FooterTab, Icon } from 'native-base';
+import { Image, ScrollView } from 'react-native';
+import { Container, Content, Text, Card, Header, Body, Button, Title, CardItem, View, Footer, FooterTab, Icon } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 
 export default class order extends Component {
@@ -8,10 +9,17 @@ export default class order extends Component {
       <Container style={{ backgroundColor: 'white' }}>
 
                 <View style={{ flex: 0.08, backgroundColor: '#F6B749', justifyContent: 'center' }}>
-                    <Text style={{ fontSize: 20, marginLeft: 15 }}>ร้านของคุณ</Text>
+                    <Text style={{ fontSize: 20, marginLeft: 15, color: 'white' }}>ร้านของคุณ</Text>
                 </View>
 
             <Content padder>
+
+                <View style={{ alignItems: 'center', justifyContent: 'center', margin: 20 }}>
+                <Image
+                  style={{ width: 150, height: 150, borderRadius: 75 }}
+                  source={require('/reactnative/uderystoreowner/src/img/sw.jpg')}
+                />
+                </View>
 
                 <View>
                   <Text style={{ textAlign: 'center' }}>ชื่อร้าน : ขนมหวาน</Text>
@@ -19,19 +27,19 @@ export default class order extends Component {
 
                 </View>
 
-                <Button dark bordered full
+                <Button block
                       //onPress={() => { Actions.history(); }}
                       style={{ marginTop: 30, flex: 1, backgroundColor: '#F6B749' }} >
                       <Text>Upload Photo</Text>
                 </Button>
 
-                <Button dark bordered full
-                      onPress={() => { Actions.history(); }}
+                <Button block
+                      //onPress={() => { Actions.history(); }}
                       style={{ marginTop: 30, flex: 1, backgroundColor: '#F6B749' }} >
-                      <Text>See History</Text>
+                      <Text>Edit Store Profile</Text>
                 </Button>
 
-                <Button dark bordered full
+                <Button block
                       //onPress={() => { Actions.history(); }}
                       style={{ marginTop: 30, flex: 1, backgroundColor: '#F6B749' }} >
                       <Text>Menu</Text>

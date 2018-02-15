@@ -6,9 +6,11 @@ export default class history extends Component {
   render() {
     return (
       <Container>
-      <View style={{ flex: 0.08, backgroundColor: '#F6B749', justifyContent: 'center' }}>
-          <Text style={{ fontSize: 20, marginLeft: 15 }}>ประวัติการสั่งซื้อ</Text>
+      <View style={{ flex: 1, backgroundColor: '#F6B749', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 20, marginLeft: 15, color: 'white' }}>ประวัติการสั่งซื้อ</Text>
       </View>
+
+      <View style={{ flex: 8 }}>
                 <Content padder>
                 <Card>
                       <CardItem>
@@ -62,6 +64,7 @@ export default class history extends Component {
                 </Card>
 
                  </Content>
+                 </View>
 
                  <Footer>
                    <FooterTab>
