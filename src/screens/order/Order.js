@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Image, ScrollView } from 'react-native';
 import { Container, Content, Text, Card, Header, Body, Button, Title, CardItem, View, Footer, FooterTab, Icon } from 'native-base';
 import { Actions } from 'react-native-router-flux';
+import FoodItem from '/reactnative/uderystoreowner/src/components/FoodItem';
 
 export default class order extends Component {
   constructor(props) {
@@ -9,16 +10,25 @@ export default class order extends Component {
    this.state = {
      selected1: 'key0',
      buttonColor: 'red',
-     list: [{ id: 0, foodName: 'ข้าวผัดหมู', price: 25, stat1: 'จ่ายแล้ว', stat2: 'ทำเสร็จแล้ว', stat3: 'รับแล้ว' }, { id: 1, foodName: 'กะเพราไก่', price: 25, stat1: 'จ่ายแล้ว', stat2: 'ทำเสร็จแล้ว', stat3: 'รับแล้ว' }, { id: 2, foodName: 'สุกี้แห้งไก่', price: 25, stat1: 'จ่ายแล้ว', stat2: 'ทำเสร็จแล้ว', stat3: 'รับแล้ว' }, { id: 3, foodName: 'ผัดไข่เค็มหมึก', price: 25, stat1: 'จ่ายแล้ว', stat2: 'ทำเสร็จแล้ว', stat3: 'รับแล้ว' }, { id: 4, foodName: 'มักกะโรนีกุ้ง', price: 25, stat1: 'จ่ายแล้ว', stat2: 'ทำเสร็จแล้ว', stat3: 'รับแล้ว' }, { id: 5, foodName: 'ส้ม', price: 25, stat1: 'จ่ายแล้ว', stat2: 'ทำเสร็จแล้ว', stat3: 'รับแล้ว' }, { id: 6, foodName: 'ส้ม', price: 25, stat1: 'จ่ายแล้ว', stat2: 'ทำเสร็จแล้ว', stat3: 'รับแล้ว' }]
-
+     list: [
+       { id: 0, foodName: 'ข้าวผัดหมู', price: 25, stat1: 'green', stat2: 'green', stat3: 'red' },
+       { id: 1, foodName: 'กะเพราไก่', price: 25, stat1: 'green', stat2: 'red', stat3: 'red' },
+       { id: 2, foodName: 'สุกี้แห้งไก่', price: 25, stat1: 'green', stat2: 'green', stat3: 'red' },
+       { id: 3, foodName: 'ผัดไข่เค็มหมึก', price: 30, stat1: 'green', stat2: 'red', stat3: 'red' },
+       { id: 4, foodName: 'มักกะโรนีกุ้ง', price: 30, stat1: 'red', stat2: 'red', stat3: 'red' },
+       { id: 5, foodName: 'ต้มยำทะเล', price: 50, stat1: 'red', stat2: 'red', stat3: 'red' },
+       { id: 6, foodName: 'คั่วไก่', price: 25, stat1: 'red', stat2: 'red', stat3: 'red' }
+     ],
    };
   }
 
-  render() {
-    function changeButtonColor() {
-        this.setState({ buttonColor: 'green' });
-    }
+  renderFoodItem() {
+    return this.state.list.map(item =>
+      <FoodItem key={item.foodName} item={item} />
+    );
+  }
 
+  render() {
     return (
       <Container style={{ backgroundColor: 'white' }}>
 
@@ -29,38 +39,7 @@ export default class order extends Component {
                 <View style={{ flex: 8 }}>
                 <ScrollView>
                 <View style={{ flex: 1, flexDirection: 'column', flexWrap: 'wrap', justifyContent: 'space-between', marginTop: 5 }}>
-                    {this.state.list.map((item, index) => (
-                        <Card style={{ flexDirection: 'row', flexWrap: 'wrap', height: 120, marginTop: 0 }} key={index}>
-                              <CardItem style={{ margin: 0 }}>
-                                  <Image
-                                    style={{ width: 170, height: 100, marginLeft: 0 }}
-                                    source={require('/reactnative/uderystoreowner/src/img/sw.jpg')}
-                                  />
-                              </CardItem>
-                              <CardItem style={{ flex: 1, flexDirection: 'column', marginRight: 20 }}>
-                                  <CardItem style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', marginLeft: 0, width: 200 }}>
-                                      <View style={{ height: 30, marginLeft: 1 }}>
-                                        <Text>{item.foodName}</Text>
-                                      </View>
-                                      <View style={{ height: 30 }}>
-                                        <Text>{item.price}</Text>
-                                      </View>
-                                  </CardItem>
-                                  <CardItem style={{ flex: 2, flexDirection: 'row', justifyContent: 'space-between', width: 220 }}>
-                                        <Button vertical rounded danger onPress={() => { this.setState({ buttonColor: 'green' }); }} style={{ marginLeft: 10, backgroundColor: this.state.buttonColor }}>
-                                          <Icon active name="navigate" />
-                                        </Button>
-                                        <Button vertical rounded danger onPress={() => { changeButtonColor(); }} style={{ marginLeft: 10, backgroundColor: this.state.buttonColor }}>
-                                          <Icon active name="navigate" />
-                                        </Button>
-                                        <Button vertical rounded danger onPress={() => { changeButtonColor(); }} style={{ marginLeft: 10, marginRight: 5, backgroundColor: this.state.buttonColor }}>
-                                          <Icon active name="navigate" />
-                                        </Button>
-                                  </CardItem>
-                              </CardItem>
-                        </Card>
-                      ))
-                    }
+                    {this.renderFoodItem()}
                 </View>
 
                 <Button dark bordered full
@@ -90,7 +69,7 @@ export default class order extends Component {
                         <Icon active name="navigate" />
                         <Text>Store</Text>
                       </Button>
-                      <Button vertical>
+                      <Button vertical onPress={() => { Actions.setting(); }}>
                         <Icon name="person" />
                         <Text>Setting</Text>
                       </Button>

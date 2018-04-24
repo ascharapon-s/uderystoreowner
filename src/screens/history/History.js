@@ -80,7 +80,7 @@ export default class history extends Component {
                        <Icon active name="navigate" />
                        <Text>Store</Text>
                      </Button>
-                     <Button vertical>
+                     <Button vertical onPress={() => { Actions.setting(); }}>
                        <Icon name="person" />
                        <Text>Setting</Text>
                      </Button>
